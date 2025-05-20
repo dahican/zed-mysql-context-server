@@ -3,17 +3,17 @@ use std::env;
 use zed::settings::ContextServerSettings;
 use zed_extension_api::{self as zed, serde_json, Command, ContextServerId, Project, Result};
 
-const PACKAGE_NAME: &str = "@zeddotdev/postgres-context-server";
-const SERVER_PATH: &str = "node_modules/@zeddotdev/postgres-context-server/index.mjs";
+const PACKAGE_NAME: &str = "@zeddotdev/mysql-context-server";
+const SERVER_PATH: &str = "node_modules/@zeddotdev/mysql-context-server/index.mjs";
 
-struct PostgresModelContextExtension;
+struct MysqlModelContextExtension;
 
 #[derive(Debug, Deserialize)]
-struct PostgresContextServerSettings {
+struct MysqlContextServerSettings {
     database_url: String,
 }
 
-impl zed::Extension for PostgresModelContextExtension {
+impl zed::Extension for MysqlModelContextExtension {
     fn new() -> Self {
         Self
     }
@@ -29,11 +29,11 @@ impl zed::Extension for PostgresModelContextExtension {
             zed::npm_install_package(PACKAGE_NAME, &latest_version)?;
         }
 
-        let settings = ContextServerSettings::for_project("postgres-context-server", project)?;
+        let settings = ContextServerSettings::for_project("mysql-context-server", project)?;
         let Some(settings) = settings.settings else {
             return Err("missing `database_url` setting".into());
         };
-        let settings: PostgresContextServerSettings =
+        let settings: MysqlContextServerSettings =
             serde_json::from_value(settings).map_err(|e| e.to_string())?;
 
         Ok(Command {
@@ -48,4 +48,4 @@ impl zed::Extension for PostgresModelContextExtension {
     }
 }
 
-zed::register_extension!(PostgresModelContextExtension);
+zed::register_extension!(MysqlModelContextExtension);

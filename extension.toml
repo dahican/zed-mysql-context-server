@@ -1,10 +1,10 @@
-id = "postgres-context-server"
-name = "Postgres Context Server"
-description = "Model Context Server for PostgreSQL"
-version = "0.0.2"
+id = "mysql-context-server"
+name = "MySQL Context Server"
+description = "Model Context Server for MySQL"
+version = "0.0.1"
 schema_version = 1
-authors = ["Max Brunsfeld <max@zed.dev>"]
-repository = "https://github.com/zed-extensions/postgres-context-server"
+authors = ["Zed Contributors"]
+repository = "https://github.com/dahican/zed-mysql-context-server"
 
-[context_servers.postgres-context-server]
-name = "Postgres Context Server"
+[context_servers.mysql-context-server]
+name = "MySQL Context Server"
