@@ -3,8 +3,8 @@ use std::env;
 use zed::settings::ContextServerSettings;
 use zed_extension_api::{self as zed, serde_json, Command, ContextServerId, Project, Result};
 
-const PACKAGE_NAME: &str = "@zeddotdev/mysql-context-server";
-const SERVER_PATH: &str = "node_modules/@zeddotdev/mysql-context-server/index.mjs";
+const PACKAGE_NAME: &str = "@dahican/mysql-context-server";
+const SERVER_PATH: &str = "node_modules/@dahican/mysql-context-server/index.mjs";
 
 struct MysqlModelContextExtension;
 
